@@ -234,28 +234,30 @@ const qsa = (s, el=document) => [...el.querySelectorAll(s)];
 
   const pop = document.createElement('div');
   pop.className = 'note-pop';
-
   pop.textContent = messages[msgIndex];
+
   msgIndex = (msgIndex + 1) % messages.length;
 
   document.body.appendChild(pop);
 
-  // 📍 GET EXACT POSITION OF ROSE
   const rect = r.getBoundingClientRect();
 
-  pop.style.position = 'fixed';
+  // ✔ IMPORTANT FIX: use viewport scroll correction
+  const x = rect.left + rect.width / 2;
+  const y = rect.top + window.scrollY;
 
-  // 🌹 place message ABOVE rose
-  pop.style.left = rect.left + rect.width / 2 + 'px';
-  pop.style.top = (rect.top - 50) + 'px';
+  pop.style.position = 'absolute';
 
-  // center text horizontally
+  pop.style.left = x + 'px';
+  pop.style.top = (y - 70) + 'px';
+
   pop.style.transform = 'translateX(-50%)';
 
-  pop.style.zIndex = '9999';
+  pop.style.zIndex = '999999';
 
-  setTimeout(() => {
-    pop.remove();
-  }, 2500);
+  pop.style.pointerEvents = 'none';
+
+  setTimeout(() => pop.remove(), 2500);
+});
 
 });
