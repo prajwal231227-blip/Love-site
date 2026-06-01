@@ -207,16 +207,16 @@ const qsa = (s, el=document) => [...el.querySelectorAll(s)];
   const field = qs('#notesField');
   if(!field) return;
   const messages = [
-    'I miss you already 💙',
-    'You are my favorite person.',
-    "Distance can't change us.",
-    'So proud of you always.',
-    'You carry my heart with you.',
-    'With you, forever feels easy',
-    'Forever starts with you.',
-    'Your smile is my safe place.',
-    'You + Art = Magic.',
-  ];
+  'I miss you already 💙',
+  'You are my favorite person in the world.',
+  'Distance can never change what we are.',
+  'I am so proud of you every single day.',
+  'You carry a piece of my heart with you.',
+  'With you, everything feels peaceful.',
+  'You are my forever feeling.',
+  'Your smile is my safest place.',
+  'You + your art = pure magic.',
+];
   for(let i=0;i<14;i++){
     const r = document.createElement('button');
     r.className='note-rose';
@@ -227,7 +227,9 @@ const qsa = (s, el=document) => [...el.querySelectorAll(s)];
     r.addEventListener('click', (e)=>{
       const pop = document.createElement('div');
       pop.className='note-pop';
-      pop.textContent = messages[(Math.random()*messages.length)|0];
+      pop.textContent = messages[msgIndex];
+
+      msgIndex = (msgIndex + 1) % messages.length;
       field.appendChild(pop);
       const rect = r.getBoundingClientRect();
       const fRect = field.getBoundingClientRect();
