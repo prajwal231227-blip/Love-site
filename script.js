@@ -231,8 +231,17 @@ const qsa = (s, el=document) => [...el.querySelectorAll(s)];
       field.appendChild(pop);
       const rect = r.getBoundingClientRect();
       const fRect = field.getBoundingClientRect();
-      pop.style.left = (rect.left - fRect.left + rect.width/2) + 'px';
-      pop.style.top  = (rect.top - fRect.top) + 'px';
+      let x = rect.left - fRect.left + rect.width / 2;
+      let y = rect.top - fRect.top;
+
+     // prevent going outside left/right
+      x = Math.max(20, Math.min(x, fRect.width - 20));
+
+// prevent going outside top/bottom
+      y = Math.max(40, Math.min(y, fRect.height - 40));
+
+      pop.style.left = x + 'px';
+      pop.style.top = y + 'px';
       setTimeout(()=>pop.remove(), 2200);
     });
   }
