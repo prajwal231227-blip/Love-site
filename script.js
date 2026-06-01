@@ -217,6 +217,7 @@ const qsa = (s, el=document) => [...el.querySelectorAll(s)];
   'Your smile is my safest place.',
   'You + your art = pure magic.',
 ];
+  let msgIndex = 0;
   for(let i=0;i<14;i++){
     const r = document.createElement('button');
     r.className='note-rose';
