@@ -202,9 +202,8 @@ const qsa = (s, el=document) => [...el.querySelectorAll(s)];
   });
 })();
 
-/* 8) Hidden love notes (heart.html) */
 (function notes(){
-  const field = qs('#notesField');
+  const field = document.querySelector('#notesField');
   if(!field) return;
 
   const messages = [
@@ -226,7 +225,7 @@ const qsa = (s, el=document) => [...el.querySelectorAll(s)];
     r.className = 'note-rose';
 
     r.style.left = Math.random() * 90 + '%';
-    r.style.top  = Math.random() * 85 + '%';
+    r.style.top = Math.random() * 85 + '%';
 
     field.appendChild(r);
 
