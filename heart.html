@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>My Heart for You, Anuja 💙</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="theme-blue">
+  <canvas id="stars" aria-hidden="true"></canvas>
+  <div class="aurora aurora-soft"></div>
+  <div class="petal-field dense"></div>
+
+  <!-- Floating music control -->
+  <div class="music-widget" role="region" aria-label="Music controls">
+    <button id="music-toggle" class="btn-icon" aria-label="Play or pause music">▶</button>
+    <input id="music-volume" type="range" min="0" max="1" step="0.01" value="0.6" aria-label="Volume" />
+  </div>
+  <audio id="bgm" preload="auto">
+    <!-- Replace with your file: assets/music/romantic-song.mp3 -->
+    <source src="assets/music/romantic-song.mp3" type="audio/mpeg">
+  </audio>
+
+  <main class="page">
+    <!-- 1) Heart-opening scene -->
+    <section class="scene" id="open-heart" data-reveal>
+      <div class="glass card center">
+        <h2 class="glow">When I open my heart, I see you</h2>
+        <p>Tap the heart to begin.</p>
+        <button id="heart-open" class="heart-portal">
+         <div class="real-heart"></div>
+        </button>
+      </div>
+    </section>
+
+    <!-- 2) Love letter (glassmorphism) -->
+    <section class="letter glass" data-reveal>
+      <h3 class="eyebrow">My Dearest Anuja</h3>
+      <article class="letter-body">
+        <p>I still remember our terrace evening — 27th November. A simple day that quietly became one of the most important days of my life.</p>
+        <p>Since then, every moment with you has become my favorite memory. Our walks and laughter at Marine Drive. Our silly jokes. Our quiet pauses. Somehow, you turn ordinary moments into warm, glowing memories.</p>
+        <p>Now you're heading to Pune to chase your art and your dreams. I am so proud of your courage and talent. One day, I will walk into a gallery and see people smiling in front of your paintings — and I will smile too, because I always knew.</p>
+        <p>Distance might stretch the map, but it will never stretch my love. Wherever you go, you carry a piece of my heart with you.</p>
+        <p>Forever yours, always cheering, always believing.</p>
+        <p class="signature">With all my love,<br>Prajwal 💙🌹</p>
+      </article>
+    </section>
+
+    <!-- 3) Memory timeline -->
+    <section class="timeline" data-reveal>
+      <h2 class="glow">Our Beautiful Journey Together 💙</h2>
+      <div class="tl">
+        <div class="tl-item glass" data-step="First Meeting">
+          <h4>First Meeting</h4>
+          <p>27th November — your building terrace. A quiet hello that changed everything.</p>
+        </div>
+        <div class="tl-item glass" data-step="Marine Drive">
+          <h4>Marine Drive</h4>
+          <p>Walks, sea breeze, and the feeling that time moves softer when we're together.</p>
+        </div>
+        <div class="tl-item glass" data-step="Favorite Memory">
+          <h4>Favorite Memory</h4>
+          <p>Every single moment with you. I can’t choose one — it’s all of them.</p>
+        </div>
+        <div class="tl-item glass" data-step="Special Moment">
+          <h4>Special Moment</h4>
+          <p>That smile of yours that makes the world feel easy.</p>
+        </div>
+        <div class="tl-item glass" data-step="Biggest Adventure">
+          <h4>Biggest Adventure</h4>
+          <p>Learning how to love better, together.</p>
+        </div>
+        <div class="tl-item glass" data-step="Future Dreams">
+          <h4>Future Dreams Together</h4>
+          <p>Your painting exhibitions, your success, your happiness — and me, clapping the loudest.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4) Romantic photo gallery -->
+    <section class="gallery-wrap" data-reveal>
+      <h2 class="glow">Memories in Blue</h2>
+      <div class="carousel" id="carousel">
+        <!-- Replace image files in assets/images/; keep data-caption texts or edit -->
+        <figure class="slide">
+          <img loading="lazy" src="assets/images/photo1.jpg" alt="Memory 1" />
+          <figcaption>This memory still makes me smile.</figcaption>
+        </figure>
+        <figure class="slide">
+          <img loading="lazy" src="assets/images/photo2.jpg" alt="Memory 2" />
+          <figcaption>I wish I could relive this day again.</figcaption>
+        </figure>
+        <figure class="slide">
+          <img loading="lazy" src="assets/images/photo3.jpg" alt="Memory 3" />
+          <figcaption>Thank you for filling my life with moments like this.</figcaption>
+        </figure>
+        <figure class="slide">
+          <img loading="lazy" src="assets/images/photo4.jpg" alt="Memory 4" />
+          <figcaption>Your laughter is my favorite sound.</figcaption>
+        </figure>
+        <figure class="slide">
+          <img loading="lazy" src="assets/images/photo5.jpg" alt="Memory 5" />
+          <figcaption>With you, the world turns gentle.</figcaption>
+        </figure>
+      </div>
+
+      <div class="carousel-controls">
+        <button class="btn-icon" id="prev" aria-label="Previous">‹</button>
+        <button class="btn-icon" id="next" aria-label="Next">›</button>
+        <button class="btn" id="fs" aria-label="Open fullscreen">Fullscreen</button>
+      </div>
+    </section>
+
+    <!-- 5) Hidden love notes (tap glowing roses) -->
+    <section class="secrets" data-reveal>
+      <h3 class="eyebrow">💌 Before you begin your new journey in Pune, tap these roses and read the words I wish I could whisper to you every day...</h3>
+      <div class="notes-field" id="notesField" aria-label="Hidden love notes">
+        <!-- Roses generated by JS -->
+      </div>
+    </section>
+
+    <!-- 6) Final surprise -->
+    <section class="final glass center" data-reveal>
+      <div class="final-heart">
+        <div class="pulse"></div>
+        <div class="heart-big"></div>
+      </div>
+      <div class="final-text">
+        <p>No matter how far you go, you will always have a home in my heart.</p>
+        <p>Distance is only a test of how far love can travel.</p>
+        <ul class="pledge">
+          <li>I will miss you.</li>
+          <li>I will support you.</li>
+          <li>I will be proud of you.</li>
+          <li>And I will love you every single day.</li>
+        </ul>
+        <p class="signature">Forever and Always. 💙🌹<br>With All My Love,<br>Prajwal</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox" aria-hidden="true">
+    <button class="btn-icon close" id="lbClose" aria-label="Close">✕</button>
+    <img id="lbImg" alt="Expanded memory" />
+    <p id="lbCap" class="lb-cap"></p>
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
