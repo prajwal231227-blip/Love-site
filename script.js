@@ -203,7 +203,7 @@ const qsa = (s, el=document) => [...el.querySelectorAll(s)];
 })();
 
 /* 8) Hidden love notes (heart.html) */
-   (function notes(){
+ (function notes(){
   const field = qs('#notesField');
   if(!field) return;
 
@@ -245,20 +245,11 @@ const qsa = (s, el=document) => [...el.querySelectorAll(s)];
       pop.style.top = '50%';
       pop.style.transform = 'translate(-50%, -50%)';
 
-      setTimeout(() => pop.remove(), 2500);
+      setTimeout(() => {
+        pop.remove();
+      }, 2500);
 
     });
   }
 })();
-     // prevent going outside left/right
-      x = Math.max(20, Math.min(x, fRect.width - 20));
-
-// prevent going outside top/bottom
-      y = Math.max(40, Math.min(y, fRect.height - 40));
-
-      pop.style.left = x + 'px';
-      pop.style.top = y + 'px';
-      setTimeout(()=>pop.remove(), 2200);
-    });
-  }
-})();
+  
