@@ -203,56 +203,53 @@ const qsa = (s, el=document) => [...el.querySelectorAll(s)];
 })();
 
 /* 8) Hidden love notes (heart.html) */
-(function notes(){
+   (function notes(){
   const field = qs('#notesField');
   if(!field) return;
+
   const messages = [
-  'I miss you already 💙',
-  'You are my favorite person in the world.',
-  'Distance can never change what we are.',
-  'I am so proud of you every single day.',
-  'You carry a piece of my heart with you.',
-  'With you, everything feels peaceful.',
-  'You are my forever feeling.',
-  'Your smile is my safest place.',
-  'You + your art = pure magic.',
-];
+    'I miss you already 💙',
+    'You are my favorite person in the world.',
+    'Distance can never change what we are.',
+    'I am so proud of you every single day.',
+    'You carry a piece of my heart with you.',
+    'With you, everything feels peaceful.',
+    'You are my forever feeling.',
+    'Your smile is my safest place.',
+    'You + your art = pure magic.',
+  ];
+
   let msgIndex = 0;
+
   for(let i=0;i<14;i++){
     const r = document.createElement('button');
-    r.className='note-rose';
-    r.style.left = Math.random()*92 + '%';
-    r.style.top  = Math.random()*82 + '%';
-    r.setAttribute('aria-label','Secret note');
+    r.className = 'note-rose';
+
+    r.style.left = Math.random()*90 + '%';
+    r.style.top  = Math.random()*85 + '%';
+
     field.appendChild(r);
-    r.addEventListener('click', (e)=>{
+
+    r.addEventListener('click', () => {
+
       const pop = document.createElement('div');
-      pop.className='note-pop';
+      pop.className = 'note-pop';
+
       pop.textContent = messages[msgIndex];
-
       msgIndex = (msgIndex + 1) % messages.length;
-      field.appendChild(pop);
-     r.addEventListener('click', () => {
 
-  const pop = document.createElement('div');
-  pop.className = 'note-pop';
+      document.body.appendChild(pop);
 
-  pop.textContent = messages[msgIndex];
-  msgIndex = (msgIndex + 1) % messages.length;
+      pop.style.position = 'fixed';
+      pop.style.left = '50%';
+      pop.style.top = '50%';
+      pop.style.transform = 'translate(-50%, -50%)';
 
-  document.body.appendChild(pop);
+      setTimeout(() => pop.remove(), 2500);
 
-  // ✅ ALWAYS CENTER SCREEN (no overlap, no out of screen)
-  pop.style.position = 'fixed';
-  pop.style.left = '50%';
-  pop.style.top = '50%';
-  pop.style.transform = 'translate(-50%, -50%)';
-
-  setTimeout(() => {
-    pop.remove();
-  }, 2500);
-
-});
+    });
+  }
+})();
      // prevent going outside left/right
       x = Math.max(20, Math.min(x, fRect.width - 20));
 
