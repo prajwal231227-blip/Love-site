@@ -467,3 +467,22 @@ body.opening .petal-field{filter:brightness(1.2)}
   .carousel{grid-auto-columns:60%}
   .notes-field{height:320px}
 }
+
+/* ===== LOVE NOTE ANIMATION ===== */
+@keyframes fadePop {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 10px) scale(0.8);
+  }
+  20% {
+    opacity: 1;
+    transform: translate(-50%, 0px) scale(1);
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -20px) scale(0.95);
+  }
+}
