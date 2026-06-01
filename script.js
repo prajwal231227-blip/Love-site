@@ -232,24 +232,30 @@ const qsa = (s, el=document) => [...el.querySelectorAll(s)];
 
     r.addEventListener('click', () => {
 
-      const pop = document.createElement('div');
-      pop.className = 'note-pop';
+  const pop = document.createElement('div');
+  pop.className = 'note-pop';
 
-      pop.textContent = messages[msgIndex];
-      msgIndex = (msgIndex + 1) % messages.length;
+  pop.textContent = messages[msgIndex];
+  msgIndex = (msgIndex + 1) % messages.length;
 
-      document.body.appendChild(pop);
+  document.body.appendChild(pop);
 
-      pop.style.position = 'fixed';
-      pop.style.left = '50%';
-      pop.style.top = '50%';
-      pop.style.transform = 'translate(-50%, -50%)';
+  // 📍 GET EXACT POSITION OF ROSE
+  const rect = r.getBoundingClientRect();
 
-      setTimeout(() => {
-        pop.remove();
-      }, 2500);
+  pop.style.position = 'fixed';
 
-    });
-  }
-})();
-  
+  // 🌹 place message ABOVE rose
+  pop.style.left = rect.left + rect.width / 2 + 'px';
+  pop.style.top = (rect.top - 50) + 'px';
+
+  // center text horizontally
+  pop.style.transform = 'translateX(-50%)';
+
+  pop.style.zIndex = '9999';
+
+  setTimeout(() => {
+    pop.remove();
+  }, 2500);
+
+});
