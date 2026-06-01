@@ -232,11 +232,27 @@ const qsa = (s, el=document) => [...el.querySelectorAll(s)];
 
       msgIndex = (msgIndex + 1) % messages.length;
       field.appendChild(pop);
-      const rect = r.getBoundingClientRect();
-      const fRect = field.getBoundingClientRect();
-      let x = rect.left - fRect.left + rect.width / 2;
-      let y = rect.top - fRect.top;
+     r.addEventListener('click', () => {
 
+  const pop = document.createElement('div');
+  pop.className = 'note-pop';
+
+  pop.textContent = messages[msgIndex];
+  msgIndex = (msgIndex + 1) % messages.length;
+
+  document.body.appendChild(pop);
+
+  // ✅ ALWAYS CENTER SCREEN (no overlap, no out of screen)
+  pop.style.position = 'fixed';
+  pop.style.left = '50%';
+  pop.style.top = '50%';
+  pop.style.transform = 'translate(-50%, -50%)';
+
+  setTimeout(() => {
+    pop.remove();
+  }, 2500);
+
+});
      // prevent going outside left/right
       x = Math.max(20, Math.min(x, fRect.width - 20));
 
