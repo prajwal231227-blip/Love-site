@@ -328,7 +328,6 @@ body{
   padding:10px 12px;
   font-size:.9rem;
 
-  /* IMPORTANT FIX */
   max-width:160px;
   white-space:normal;
   word-wrap:break-word;
@@ -336,6 +335,9 @@ body{
 
   box-shadow:var(--shadow);
   text-align:center;
+
+  font-weight:700;
+  color:#e8f3ff;
 }
 
 /* Final section */
