@@ -203,7 +203,7 @@ const qsa = (s, el=document) => [...el.querySelectorAll(s)];
 })();
 
 /* 8) Hidden love notes (heart.html) */
- (function notes(){
+(function notes(){
   const field = qs('#notesField');
   if(!field) return;
 
@@ -221,43 +221,33 @@ const qsa = (s, el=document) => [...el.querySelectorAll(s)];
 
   let msgIndex = 0;
 
-  for(let i=0;i<14;i++){
+  for(let i = 0; i < 14; i++){
     const r = document.createElement('button');
     r.className = 'note-rose';
 
-    r.style.left = Math.random()*90 + '%';
-    r.style.top  = Math.random()*85 + '%';
+    r.style.left = Math.random() * 90 + '%';
+    r.style.top  = Math.random() * 85 + '%';
 
     field.appendChild(r);
 
     r.addEventListener('click', () => {
+      const pop = document.createElement('div');
+      pop.className = 'note-pop';
+      pop.textContent = messages[msgIndex];
 
-  const pop = document.createElement('div');
-  pop.className = 'note-pop';
-  pop.textContent = messages[msgIndex];
+      msgIndex = (msgIndex + 1) % messages.length;
 
-  msgIndex = (msgIndex + 1) % messages.length;
+      document.body.appendChild(pop);
 
-  document.body.appendChild(pop);
+      const rect = r.getBoundingClientRect();
 
-  const rect = r.getBoundingClientRect();
+      pop.style.position = 'fixed';
+      pop.style.left = rect.left + rect.width / 2 + 'px';
+      pop.style.top = (rect.top - 50) + 'px';
+      pop.style.transform = 'translateX(-50%)';
+      pop.style.zIndex = '9999';
 
-  // ✔ IMPORTANT FIX: use viewport scroll correction
-  const x = rect.left + rect.width / 2;
-  const y = rect.top + window.scrollY;
-
-  pop.style.position = 'absolute';
-
-  pop.style.left = x + 'px';
-  pop.style.top = (y - 70) + 'px';
-
-  pop.style.transform = 'translateX(-50%)';
-
-  pop.style.zIndex = '999999';
-
-  pop.style.pointerEvents = 'none';
-
-  setTimeout(() => pop.remove(), 2500);
-});
-
-});
+      setTimeout(() => pop.remove(), 2500);
+    });
+  }
+})();
